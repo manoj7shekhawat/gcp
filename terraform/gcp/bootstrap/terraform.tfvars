@@ -1,7 +1,7 @@
 gcloud_project = "m7shekhawat"
 
 bucket = {
-  name          = "mshekhawat-bucket-tfstate"
+  name          = "mshekhawat"
   force_destroy = true
   location      = "europe-north1"
   storage_class = "STANDARD"
