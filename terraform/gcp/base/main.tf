@@ -8,7 +8,7 @@ module "filestore" {
   source = "./../modules/filestore"
 
   filestore    = var.filestore
-  network_name = var.vpc_network
+  network_name = module.compute_engine.vpc_network.name
 }
 
 module "gke" {
@@ -16,6 +16,6 @@ module "gke" {
 
   gke             = var.gke
   location        = var.location
-  network_name    = var.vpc_network
+  network_name    = module.compute_engine.vpc_network.name
   service_account = var.service_account
 }
