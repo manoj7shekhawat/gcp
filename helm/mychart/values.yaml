@@ -1,0 +1,34 @@
+namespace: 'test'
+
+replicaCount: 1
+
+image:
+  name: 'busybox'
+  tag: '1.35.0'
+
+container:
+  port: 80
+
+storage_class:
+  name: 'filestore-sc'
+  vpc_name: 'vpc-network'
+
+pv_1:
+  name: 'one'
+  ip: '10.36.189.122'
+  driver: 'filestore.csi.storage.gke.io'
+  storage: '1Ti'
+  mountPath: '/mnt'
+  shareName: 'file_share_one'
+  accessModes: 'ReadOnlyMany'
+  volumeHandle: 'modeInstance/europe-north1-a/filestore-one/file_share_one'
+
+pv_2:
+  name: 'two'
+  ip: '172.25.244.130'
+  driver: 'filestore.csi.storage.gke.io'
+  storage: '1Ti'
+  mountPath: '/logs'
+  shareName: 'file_share_two'
+  accessModes: 'ReadWriteMany'
+  volumeHandle: 'modeInstance/europe-central2-a/filestore-two/file_share_two'

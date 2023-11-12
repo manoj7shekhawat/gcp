@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.namespace }}-{{ .Values.pv_1.name }}-pv
+spec:
+  capacity:
+    storage: {{ .Values.pv_1.storage }}
+  accessModes:
+    - {{ .Values.pv_1.accessModes }}
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  storageClassName: {{ .Values.storage_class.name }}
+  csi:
+    driver: {{ .Values.pv_1.driver }}
+    volumeHandle: {{ .Values.pv_1.volumeHandle }}
+    volumeAttributes:
+      ip: {{ .Values.pv_1.ip }}
+      volume: {{ .Values.pv_1.shareName }}
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.namespace }}-{{ .Values.pv_1.name }}-pvc
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+    - {{ .Values.pv_1.accessModes }}
+  storageClassName: {{ .Values.storage_class.name }}
+  volumeName: {{ .Values.namespace }}-{{ .Values.pv_1.name }}-pv
+  resources:
+    requests:
+      storage: {{ .Values.pv_1.storage }}
+
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.namespace }}-{{ .Values.pv_2.name }}-pv
+spec:
+  capacity:
+    storage: {{ .Values.pv_2.storage }}
+  accessModes:
+    - {{ .Values.pv_2.accessModes }}
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  storageClassName: {{ .Values.storage_class.name }}
+  csi:
+    driver: {{ .Values.pv_2.driver }}
+    volumeHandle: {{ .Values.pv_2.volumeHandle }}
+    volumeAttributes:
+      ip: {{ .Values.pv_2.ip }}
+      volume: {{ .Values.pv_2.shareName }}
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.namespace }}-{{ .Values.pv_2.name }}-pvc
+  namespace: {{ .Values.namespace }}
+spec:
+  accessModes:
+    - {{ .Values.pv_2.accessModes }}
+  storageClassName: {{ .Values.storage_class.name }}
+  volumeName: {{ .Values.namespace }}-{{ .Values.pv_2.name }}-pv
+  resources:
+    requests:
+      storage: {{ .Values.pv_2.storage }}
