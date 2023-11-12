@@ -14,6 +14,6 @@ terraform {
 
 provider "google" {
   project = var.gcloud_project
-  region  = "europe-north1"
-  zone    = "europe-north1-a"
+  region  = var.region
+  zone    = var.location
 }

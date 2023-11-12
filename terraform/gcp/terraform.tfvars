@@ -1,5 +1,9 @@
 gcloud_project = "m7shekhawat"
 
+region = "europe-north1"
+
+location = "europe-north1-a"
+
 vpc_network = "vpc-network"
 
 filestore = {
@@ -23,4 +27,15 @@ filestore = {
       name        = "file_share_two"
     }
   }
+}
+
+service_account = {
+  name = "Manoj Shekhawat"
+  account_id = "mshekhawat"
+  description = "Manoj Shekhawat service account"
+}
+
+gke = {
+  name               = "mshekhawat-gke"
+  initial_node_count = 1
 }
